@@ -1,0 +1,3 @@
+test/examples/dune
+test/examples/dune-project
+test/examples/dune-workspace

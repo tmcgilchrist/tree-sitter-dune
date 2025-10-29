@@ -2,10 +2,27 @@ name: CI
 
 on:
   push:
-    branches: [ main, master ]
+    branches: [main, master]
+    paths:
+      - grammar.js
+      - src/**
+      - test/**
+      - bindings/**
+      - binding.gyp
+      - .github/workflows/ci.yml
   pull_request:
-    branches: [ main, master ]
+    paths:
+      - grammar.js
+      - src/**
+      - test/**
+      - bindings/**
+      - binding.gyp
+      - .github/workflows/ci.yml
   workflow_dispatch:
+
+concurrency:
+  group: ${{github.workflow}}-${{github.ref}}
+  cancel-in-progress: true
 
 jobs:
   test:
@@ -14,95 +31,52 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
+        os: [ubuntu-latest, macos-14, windows-latest]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
+      - name: Set up tree-sitter
+        uses: tree-sitter/setup-action/cli@v1
+
+      - name: Run parser tests
+        uses: tree-sitter/parser-test-action@v2
         with:
+          test-rust: ${{runner.os == 'Linux'}}
+          test-node: true
+          test-python: false
+          test-go: true
+          test-swift: false
           node-version: '20'
 
-      - name: Install tree-sitter CLI
-        run: npm install -g tree-sitter-cli
+  parse-examples:
+    name: Parse Examples
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-14, windows-latest]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - name: Generate parser
-        run: tree-sitter generate
-
-      - name: Run tests
-        run: tree-sitter test
+      - name: Set up tree-sitter
+        uses: tree-sitter/setup-action/cli@v1
 
       - name: Parse example files
-        run: |
-          echo "(lang dune 3.7)" | tree-sitter parse
-          echo "(library (name test))" | tree-sitter parse
-
-  lint:
-    name: Lint Grammar
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: tree-sitter/parse-action@v4
         with:
-          node-version: '20'
-
-      - name: Install tree-sitter CLI
-        run: npm install -g tree-sitter-cli
-
-      - name: Check grammar generates without errors
-        run: tree-sitter generate
-
-      - name: Verify all test files are valid
-        run: tree-sitter test
-
-  build-wasm:
-    name: Build WASM
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: Install tree-sitter CLI
-        run: npm install -g tree-sitter-cli
-
-      - name: Generate parser
-        run: tree-sitter generate
-
-      - name: Build WASM
-        run: tree-sitter build --wasm
-
-      - name: Upload WASM artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: tree-sitter-dune.wasm
-          path: tree-sitter-dune.wasm
+          files: test/files.txt
 
   check-queries:
-    name: Validate Queries
+    name: Check Queries
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: Install tree-sitter CLI
-        run: npm install -g tree-sitter-cli
-
-      - name: Generate parser
-        run: tree-sitter generate
+      - name: Set up tree-sitter
+        uses: tree-sitter/setup-action/cli@v1
 
       - name: Test highlight queries
         run: tree-sitter highlight queries/highlights.scm --check

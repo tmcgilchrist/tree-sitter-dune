@@ -1,0 +1,42 @@
+(lang dune 3.7)
+
+(name my_project)
+
+(version 1.2.0)
+
+(generate_opam_files true)
+
+(source
+ (github username/my_project))
+
+(license MIT)
+
+(authors "Alice Developer" "Bob Contributor")
+
+(maintainers "alice@example.com")
+
+(homepage "https://github.com/username/my_project")
+
+(documentation "https://username.github.io/my_project")
+
+(bug_reports "https://github.com/username/my_project/issues")
+
+(package
+ (name my_project)
+ (synopsis "A sample OCaml project")
+ (description "A longer description of my OCaml project showcasing dune-project features")
+ (depends
+  ocaml
+  dune
+  base
+  stdio
+  (alcotest :with-test)
+  (odoc :with-doc)))
+
+(using menhir 2.1)
+
+(formatting ocamlformat)
+
+(implicit_transitive_deps false)
+
+(warnings -4-41-42-44)

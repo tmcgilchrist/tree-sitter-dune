@@ -1,0 +1,23 @@
+(lang dune 3.7)
+
+(profile dev)
+
+(context default)
+
+(context
+ (opam
+  (switch 4.14.1)
+  (name ocaml-414)
+  (merlin)))
+
+(context
+ (opam
+  (switch 5.1.0)
+  (name ocaml-510)
+  (profile release)))
+
+(env
+ (dev
+  (flags (:standard -g)))
+ (release
+  (flags (:standard -O3 -unbox-closures))))

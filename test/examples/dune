@@ -1,0 +1,48 @@
+; Example dune build file showcasing various stanzas
+
+(library
+ (name my_library)
+ (public_name mylib)
+ (libraries base stdio)
+ (preprocess (pps ppx_inline_test ppx_assert))
+ (modules my_module other_module))
+
+(executable
+ (name main)
+ (public_name myapp)
+ (libraries my_library cmdliner)
+ (modules main))
+
+(test
+ (name test_mylib)
+ (libraries my_library alcotest)
+ (modules test_mylib))
+
+(rule
+ (targets generated.ml)
+ (deps generator.exe input.txt)
+ (action (run ./generator.exe %{deps} -o %{targets})))
+
+(alias
+ (name runtest)
+ (deps test_mylib.exe)
+ (action (run %{deps})))
+
+(install
+ (section bin)
+ (files (main.exe as myapp)))
+
+(menhir
+ (modules parser)
+ (flags --explain))
+
+(ocamllex lexer)
+
+(copy_files
+ (files data/*.txt))
+
+(env
+ (dev
+  (flags (:standard -w +a-4-42-44)))
+ (release
+  (flags (:standard -O3))))
