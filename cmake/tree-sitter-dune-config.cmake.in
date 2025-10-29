@@ -1,0 +1,5 @@
+@PACKAGE_INIT@
+
+include("${CMAKE_CURRENT_LIST_DIR}/tree-sitter-dune-targets.cmake")
+
+check_required_components(tree-sitter-dune)

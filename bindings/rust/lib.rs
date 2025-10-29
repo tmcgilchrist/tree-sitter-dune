@@ -45,6 +45,9 @@ pub const HIGHLIGHTS_QUERY: &str = include_str!("../../queries/highlights.scm");
 /// The injections query for this language.
 pub const INJECTIONS_QUERY: &str = include_str!("../../queries/injections.scm");
 
+/// The symbol tagging query for this language.
+pub const TAGS_QUERY: &str = include_str!("../../queries/tags.scm");
+
 #[cfg(test)]
 mod tests {
     #[test]

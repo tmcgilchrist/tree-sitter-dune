@@ -3,6 +3,9 @@
 [![CI](https://github.com/emillon/tree-sitter-dune/workflows/CI/badge.svg)](https://github.com/emillon/tree-sitter-dune/actions)
 [![npm](https://img.shields.io/npm/v/tree-sitter-dune.svg)](https://www.npmjs.com/package/tree-sitter-dune)
 [![crates.io](https://img.shields.io/crates/v/tree-sitter-dune.svg)](https://crates.io/crates/tree-sitter-dune)
+[![pypi](https://img.shields.io/pypi/v/tree-sitter-dune.svg)](https://pypi.org/project/tree-sitter-dune/)
+[![discord](https://img.shields.io/discord/1063097320771698699?logo=discord&label=discord)](https://discord.gg/w7nTvsVJhm)
+[![matrix](https://img.shields.io/matrix/tree-sitter-chat:matrix.org?logo=matrix&label=matrix)](https://matrix.to/#/#tree-sitter-chat:matrix.org)
 
 Tree-sitter grammar for [Dune](https://dune.readthedocs.io/) build system files.
 
@@ -82,6 +85,52 @@ fn main() {
 
     let tree = parser.parse(source_code, None).unwrap();
     println!("{}", tree.root_node().to_sexp());
+}
+```
+
+### Python
+
+```python
+from tree_sitter import Language, Parser
+import tree_sitter_dune
+
+parser = Parser()
+parser.set_language(Language(tree_sitter_dune.language(), "dune"))
+
+source_code = b"""
+(library
+ (name my_lib)
+ (libraries base stdio))
+"""
+
+tree = parser.parse(source_code)
+print(tree.root_node.sexp())
+```
+
+### Go
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    sitter "github.com/tree-sitter/go-tree-sitter"
+    dune "github.com/emillon/tree-sitter-dune/bindings/go"
+)
+
+func main() {
+    parser := sitter.NewParser()
+    parser.SetLanguage(sitter.NewLanguage(dune.Language()))
+
+    sourceCode := []byte(`
+(library
+ (name my_lib)
+ (libraries base stdio))
+`)
+
+    tree := parser.Parse(sourceCode, nil)
+    fmt.Println(tree.RootNode().ToSexp())
 }
 ```
 
