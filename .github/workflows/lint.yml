@@ -5,12 +5,12 @@ on:
     branches: [main, master]
     paths:
       - grammar.js
-      - .eslintrc.json
+      - eslint.config.mjs
       - .github/workflows/lint.yml
   pull_request:
     paths:
       - grammar.js
-      - .eslintrc.json
+      - eslint.config.mjs
       - .github/workflows/lint.yml
   workflow_dispatch:
 
