@@ -44,8 +44,9 @@
 
 ; Project name (in dune-project files)
 (stanza
-  (project_name
-    [(quoted_string) (multiline_string)] @name)) @definition.project
+  (stanza_name) @_stanza_type
+  (#eq? @_stanza_type "name")
+  [(quoted_string) (multiline_string)] @name) @definition.project
 
 ; Rule targets
 (stanza
