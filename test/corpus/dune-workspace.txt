@@ -1,0 +1,269 @@
+====================
+minimal workspace
+====================
+
+(lang dune 3.7)
+(context default)
+
+---
+
+(source_file
+  (stanza
+    (stanza_name))
+  (stanza
+    (stanza_name)))
+
+================
+profile stanza
+================
+
+(lang dune 3.7)
+(profile release)
+
+---
+
+(source_file
+  (stanza
+    (stanza_name))
+  (stanza
+    (stanza_name)))
+
+===================
+opam context basic
+===================
+
+(context (opam (switch 4.14.1)))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)))
+
+==========================
+opam context with fields
+==========================
+
+(context
+ (opam
+  (switch 4.14.1)
+  (name my-context)
+  (profile release)))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)))
+
+===============================
+opam context with merlin
+===============================
+
+(context
+ (opam
+  (switch 4.14.1)
+  (merlin)))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)))
+
+====================================
+opam context with cross-compilation
+====================================
+
+(context
+ (opam
+  (switch 4.14.1)
+  (name cross)
+  (toolchain arm)
+  (host default)))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)))
+
+=============================
+multiple contexts
+=============================
+
+(lang dune 3.7)
+
+(context default)
+
+(context (opam (switch 4.08.1)))
+
+(context (opam (switch 4.14.1)))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name))
+  (stanza
+    (stanza_name))
+  (stanza
+    (stanza_name))
+  (stanza
+    (stanza_name)))
+
+================================
+context with all common fields
+================================
+
+(context
+ (opam
+  (switch 4.14.1)
+  (name test-context)
+  (profile dev)
+  (toolchain custom)
+  (merlin)
+  (generate_merlin_rules)))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)))
+
+====================================
+workspace with profile and context
+====================================
+
+(lang dune 3.7)
+
+(profile dev)
+
+(context default)
+
+---
+
+(source_file
+  (stanza
+    (stanza_name))
+  (stanza
+    (stanza_name))
+  (stanza
+    (stanza_name)))
+
+======================================
+opam context with disable flag
+======================================
+
+(context
+ (opam
+  (switch 4.14.1)
+  (disable_dynamically_linked_foreign_archives true)))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)))
+
+==========================
+opam context with paths
+==========================
+
+(context
+ (opam
+  (switch 4.14.1)
+  (paths (PATH (/usr/local/bin /usr/bin)))))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (sexp
+      (sexp)
+      (sexp
+        (sexp)
+        (sexp)))))
+
+===================================
+complete workspace example
+===================================
+
+(lang dune 3.7)
+
+(profile release)
+
+(context default)
+
+(context
+ (opam
+  (switch 4.14.1)
+  (name ocaml-414)
+  (merlin)))
+
+(context
+ (opam
+  (switch 5.0.0)
+  (name ocaml-500)))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name))
+  (stanza
+    (stanza_name))
+  (stanza
+    (stanza_name))
+  (stanza
+    (stanza_name))
+  (stanza
+    (stanza_name)))
+
+======
+config
+======
+
+(config (build_dir _build))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (sexp
+      (sexp)
+      (sexp))))
+
+========
+lock_dir
+========
+
+(lock_dir dune.lock)
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)))
+
+==========
+repository
+==========
+
+(repository
+ (name default)
+ (source https://opam.ocaml.org))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (sexp
+      (sexp)
+      (sexp))
+    (sexp
+      (sexp)
+      (sexp))))

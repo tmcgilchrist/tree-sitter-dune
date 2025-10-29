@@ -1,0 +1,30 @@
+{
+  "grammars": [
+    {
+      "name": "dune",
+      "scope": "source.dune",
+      "file-types": ["dune", "dune-project", "dune-workspace"],
+      "highlights": "queries/highlights.scm",
+      "injections": "queries/injections.scm"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "Tree-sitter grammar for Dune build system files",
+    "authors": [
+      {
+        "name": "emillon"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/emillon/tree-sitter-dune"
+    }
+  },
+  "bindings": {
+    "c": true,
+    "node": true,
+    "python": true,
+    "rust": true
+  }
+}

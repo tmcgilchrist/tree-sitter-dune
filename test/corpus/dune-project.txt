@@ -1,0 +1,201 @@
+====
+lang
+====
+
+(lang dune 3.7)
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)))
+
+====
+lang and name
+====
+
+(lang dune 3.7)
+(name my_project)
+
+---
+
+(source_file
+  (stanza
+    (stanza_name))
+  (stanza
+    (stanza_name)))
+
+================
+simple project
+================
+
+(lang dune 3.7)
+
+(name my_project)
+
+(version 1.0.0)
+
+(generate_opam_files true)
+
+(authors "Alice" "Bob")
+
+(license MIT)
+
+---
+
+(source_file
+  (stanza
+    (stanza_name))
+  (stanza
+    (stanza_name))
+  (stanza
+    (stanza_name))
+  (stanza
+    (stanza_name))
+  (stanza
+    (stanza_name)
+    (quoted_string)
+    (quoted_string))
+  (stanza
+    (stanza_name)))
+
+=======
+package
+=======
+
+(package
+ (name foo)
+ (depends ocaml dune))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (field_name)
+    (package_name)
+    (field_name)
+    (package_name)
+    (package_name)))
+
+============
+source github
+============
+
+(source (github user/repo))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)))
+
+============
+using menhir
+============
+
+(using menhir 2.0)
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)))
+
+=================
+formatting enabled
+=================
+
+(formatting ocamlformat)
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)))
+
+====================
+formatting disabled
+====================
+
+(formatting disabled)
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)))
+
+===
+pin
+===
+
+(pin
+ (base https://github.com/user/base.git))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (package_name)))
+
+========
+warnings
+========
+
+(warnings -4-41-42-44)
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)))
+
+==================
+implicit_transitive_deps
+==================
+
+(implicit_transitive_deps false)
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)))
+
+=====
+subst
+=====
+
+(subst)
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)))
+
+====================
+maintenance_intent
+====================
+
+(maintenance_intent active)
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)))
+
+====================
+opam_file_location
+====================
+
+(opam_file_location inside_opam_directory)
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)))

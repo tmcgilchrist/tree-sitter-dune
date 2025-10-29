@@ -624,16 +624,14 @@ test
 (source_file
   (stanza
     (stanza_name)
+    (field_name)
+    (module_name)
     (sexp
       (sexp)
       (sexp))
-    (sexp
-      (sexp)
-      (sexp))
-    (sexp
-      (sexp)
-      (sexp)
-      (sexp))
+    (field_name)
+    (library_name)
+    (library_name)
     (sexp
       (sexp)
       (sexp))))
@@ -664,13 +662,9 @@ cram
 (source_file
   (stanza
     (stanza_name)
-    (sexp
-      (sexp)
-      (sexp)
-      (sexp))
-    (sexp
-      (sexp)
-      (sexp))))
+    (field_name)
+    (field_name)
+    (file_name)))
 
 ====
 dirs
@@ -700,12 +694,10 @@ toplevel
 (source_file
   (stanza
     (stanza_name)
-    (sexp
-      (sexp)
-      (sexp))
-    (sexp
-      (sexp)
-      (sexp))))
+    (field_name)
+    (module_name)
+    (field_name)
+    (library_name)))
 
 =======
 install
@@ -720,12 +712,9 @@ install
 (source_file
   (stanza
     (stanza_name)
-    (sexp
-      (sexp)
-      (sexp))
-    (sexp
-      (sexp)
-      (sexp))))
+    (field_name)
+    (field_name)
+    (sexp)))
 
 =============
 documentation
@@ -905,3 +894,155 @@ enabled_if and
             (file_name))
           (file_name_dep
             (file_name)))))))
+
+==========
+copy_files
+==========
+
+(copy_files (files *.txt))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (field_name)
+    (file_name)))
+
+======
+menhir
+======
+
+(menhir
+ (modules parser))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (field_name)
+    (module_name)))
+
+====================
+menhir with merge_into
+====================
+
+(menhir
+ (modules parser lexer)
+ (merge_into combined))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (field_name)
+    (module_name)
+    (module_name)
+    (field_name)
+    (module_name)))
+
+=======
+include
+=======
+
+(include dune.inc)
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (file_name)))
+
+===============
+ignored_subdirs
+===============
+
+(ignored_subdirs vendor _build)
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (file_name)
+    (file_name)))
+
+===============
+foreign_library
+===============
+
+(foreign_library
+ (archive_name mylib)
+ (language c))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (field_name)
+    (field_name)))
+
+======
+plugin
+======
+
+(plugin
+ (name myplugin)
+ (libraries base))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (field_name)
+    (module_name)
+    (field_name)
+    (library_name)))
+
+===
+mdx
+===
+
+(mdx
+ (files README.md))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (field_name)
+    (file_name)))
+
+==========
+coq.theory
+==========
+
+(coq.theory
+ (name MyTheory))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (field_name)))
+
+========================
+deprecated_library_name
+========================
+
+(deprecated_library_name old_lib new_lib)
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (library_name)
+    (library_name)))
