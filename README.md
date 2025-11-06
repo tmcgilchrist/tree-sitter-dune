@@ -1,11 +1,9 @@
 # tree-sitter-dune
 
-[![CI](https://github.com/emillon/tree-sitter-dune/workflows/CI/badge.svg)](https://github.com/emillon/tree-sitter-dune/actions)
+[![CI](https://github.com/emillon/tree-sitter-dune/workflows/CI/badge.svg)](https://github.com/tmcgilchrist/tree-sitter-dune/actions)
 [![npm](https://img.shields.io/npm/v/tree-sitter-dune.svg)](https://www.npmjs.com/package/tree-sitter-dune)
 [![crates.io](https://img.shields.io/crates/v/tree-sitter-dune.svg)](https://crates.io/crates/tree-sitter-dune)
 [![pypi](https://img.shields.io/pypi/v/tree-sitter-dune.svg)](https://pypi.org/project/tree-sitter-dune/)
-[![discord](https://img.shields.io/discord/1063097320771698699?logo=discord&label=discord)](https://discord.gg/w7nTvsVJhm)
-[![matrix](https://img.shields.io/matrix/tree-sitter-chat:matrix.org?logo=matrix&label=matrix)](https://matrix.to/#/#tree-sitter-chat:matrix.org)
 
 Tree-sitter grammar for [Dune](https://dune.readthedocs.io/) build system files.
 
@@ -41,7 +39,7 @@ cargo add tree-sitter-dune
 ### Tree-sitter CLI
 
 ```bash
-git clone https://github.com/emillon/tree-sitter-dune
+git clone https://github.com/tmcgilchrist/tree-sitter-dune
 cd tree-sitter-dune
 tree-sitter generate
 tree-sitter test
@@ -116,7 +114,7 @@ import (
     "context"
     "fmt"
     sitter "github.com/tree-sitter/go-tree-sitter"
-    dune "github.com/emillon/tree-sitter-dune/bindings/go"
+    dune "github.com/tmcgilchrist/tree-sitter-dune/bindings/go"
 )
 
 func main() {
@@ -156,11 +154,6 @@ With [tree-sitter mode](https://github.com/emacs-tree-sitter/elisp-tree-sitter):
 ```elisp
 (add-to-list 'tree-sitter-major-mode-language-alist '(dune-mode . dune))
 ```
-
-### VS Code
-
-Install the [Dune extension](https://marketplace.visualstudio.com/items?itemName=ocamllabs.ocaml-platform) which uses this grammar.
-
 ## Grammar Coverage
 
 ### dune files
