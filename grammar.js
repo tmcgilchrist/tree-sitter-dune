@@ -383,12 +383,12 @@ module.exports = grammar({
       ),
     _version_constraint: ($) =>
       choice(
-        seq('=', $._atom_or_qs),
-        seq('>=', $._atom_or_qs),
-        seq('>', $._atom_or_qs),
-        seq('<=', $._atom_or_qs),
-        seq('<', $._atom_or_qs),
-        seq('<>', $._atom_or_qs),
+        wrap('=', $._atom_or_qs),
+        wrap('>=', $._atom_or_qs),
+        wrap('>', $._atom_or_qs),
+        wrap('<=', $._atom_or_qs),
+        wrap('<', $._atom_or_qs),
+        wrap('<>', $._atom_or_qs),
         wrap('and', repeat1($._version_constraint)),
         wrap('or', repeat1($._version_constraint)),
         $._atom_or_qs, // for :dev, :with-test, etc.

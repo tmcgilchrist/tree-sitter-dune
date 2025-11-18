@@ -199,3 +199,38 @@ opam_file_location
 (source_file
   (stanza
     (stanza_name)))
+
+====================================
+Bug #6: package with allow_empty and dependencies
+====================================
+
+(lang dune 3.16)
+(name eglot)
+(generate_opam_files true)
+(executables_implicit_empty_intf)
+(package
+  (name eglot)
+  (allow_empty true)
+  (depends
+   (ocaml (>= 5.2.0))
+   (ocamlformat :with-dev-setup)))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name))
+  (stanza
+    (stanza_name))
+  (stanza
+    (stanza_name))
+  (stanza
+    (stanza_name))
+  (stanza
+    (stanza_name)
+    (field_name)
+    value: (package_name)
+    (field_name)
+    (field_name)
+    value: (package_name)
+    value: (package_name)))
