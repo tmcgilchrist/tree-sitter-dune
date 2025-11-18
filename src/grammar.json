@@ -4687,17 +4687,29 @@
           "members": [
             {
               "type": "STRING",
+              "value": "("
+            },
+            {
+              "type": "STRING",
               "value": "="
             },
             {
               "type": "SYMBOL",
               "name": "_atom_or_qs"
+            },
+            {
+              "type": "STRING",
+              "value": ")"
             }
           ]
         },
         {
           "type": "SEQ",
           "members": [
+            {
+              "type": "STRING",
+              "value": "("
+            },
             {
               "type": "STRING",
               "value": ">="
@@ -4705,12 +4717,20 @@
             {
               "type": "SYMBOL",
               "name": "_atom_or_qs"
+            },
+            {
+              "type": "STRING",
+              "value": ")"
             }
           ]
         },
         {
           "type": "SEQ",
           "members": [
+            {
+              "type": "STRING",
+              "value": "("
+            },
             {
               "type": "STRING",
               "value": ">"
@@ -4718,12 +4738,20 @@
             {
               "type": "SYMBOL",
               "name": "_atom_or_qs"
+            },
+            {
+              "type": "STRING",
+              "value": ")"
             }
           ]
         },
         {
           "type": "SEQ",
           "members": [
+            {
+              "type": "STRING",
+              "value": "("
+            },
             {
               "type": "STRING",
               "value": "<="
@@ -4731,12 +4759,20 @@
             {
               "type": "SYMBOL",
               "name": "_atom_or_qs"
+            },
+            {
+              "type": "STRING",
+              "value": ")"
             }
           ]
         },
         {
           "type": "SEQ",
           "members": [
+            {
+              "type": "STRING",
+              "value": "("
+            },
             {
               "type": "STRING",
               "value": "<"
@@ -4744,6 +4780,10 @@
             {
               "type": "SYMBOL",
               "name": "_atom_or_qs"
+            },
+            {
+              "type": "STRING",
+              "value": ")"
             }
           ]
         },
@@ -4752,11 +4792,19 @@
           "members": [
             {
               "type": "STRING",
+              "value": "("
+            },
+            {
+              "type": "STRING",
               "value": "<>"
             },
             {
               "type": "SYMBOL",
               "name": "_atom_or_qs"
+            },
+            {
+              "type": "STRING",
+              "value": ")"
             }
           ]
         },
