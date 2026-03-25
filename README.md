@@ -149,11 +149,8 @@ require'nvim-treesitter.configs'.setup {
 
 ### Emacs
 
-With [tree-sitter mode](https://github.com/emacs-tree-sitter/elisp-tree-sitter):
+[neocaml](https://github.com/bbatsov/neocaml) provides `neocaml-dune-mode`, a tree-sitter based major mode for dune, dune-project, and dune-workspace files. It uses Emacs's built-in `treesit` library (Emacs 29+).
 
-```elisp
-(add-to-list 'tree-sitter-major-mode-language-alist '(dune-mode . dune))
-```
 ## Grammar Coverage
 
 ### dune files
