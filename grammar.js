@@ -365,9 +365,9 @@ module.exports = grammar({
             dune_field($, 'name', $.package_name),
             dune_field($, 'synopsis', $._atom_or_qs),
             dune_field($, 'description', $._atom_or_qs),
-            dune_field($, 'depends', repeat1($._package_dep)),
-            dune_field($, 'conflicts', repeat1($._package_dep)),
-            dune_field($, 'depopts', repeat1($._package_dep)),
+            dune_field($, 'depends', repeat1($.package_dep)),
+            dune_field($, 'conflicts', repeat1($.package_dep)),
+            dune_field($, 'depopts', repeat1($.package_dep)),
             dune_field($, 'tags', repeat1($._atom_or_qs)),
             dune_field($, 'deprecated_package_names', repeat1($.package_name)),
             dune_field($, 'sites', repeat($.sexp)),
@@ -376,12 +376,12 @@ module.exports = grammar({
           ),
         ),
       ),
-    _package_dep: ($) =>
+    package_dep: ($) =>
       choice(
         $.package_name,
-        wrap($.package_name, repeat1($._version_constraint)),
+        wrap($.package_name, repeat1($.version_constraint)),
       ),
-    _version_constraint: ($) =>
+    version_constraint: ($) =>
       choice(
         wrap('=', $._atom_or_qs),
         wrap('>=', $._atom_or_qs),
@@ -389,8 +389,8 @@ module.exports = grammar({
         wrap('<=', $._atom_or_qs),
         wrap('<', $._atom_or_qs),
         wrap('<>', $._atom_or_qs),
-        wrap('and', repeat1($._version_constraint)),
-        wrap('or', repeat1($._version_constraint)),
+        wrap('and', repeat1($.version_constraint)),
+        wrap('or', repeat1($.version_constraint)),
         $._atom_or_qs, // for :dev, :with-test, etc.
       ),
     // dune-workspace stanzas

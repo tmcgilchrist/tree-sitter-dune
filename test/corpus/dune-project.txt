@@ -75,8 +75,10 @@ package
     (field_name)
     (package_name)
     (field_name)
-    (package_name)
-    (package_name)))
+    (package_dep
+      (package_name))
+    (package_dep
+      (package_name))))
 
 ============
 source github
@@ -232,5 +234,9 @@ Bug #6: package with allow_empty and dependencies
     value: (package_name)
     (field_name)
     (field_name)
-    value: (package_name)
-    value: (package_name)))
+    value: (package_dep
+      (package_name)
+      (version_constraint))
+    value: (package_dep
+      (package_name)
+      (version_constraint))))
