@@ -212,6 +212,25 @@
     "fields": {}
   },
   {
+    "type": "package_dep",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "package_name",
+          "named": true
+        },
+        {
+          "type": "version_constraint",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "package_name",
     "named": true,
     "fields": {},
@@ -668,30 +687,6 @@
             "named": false
           },
           {
-            "type": "<",
-            "named": false
-          },
-          {
-            "type": "<=",
-            "named": false
-          },
-          {
-            "type": "<>",
-            "named": false
-          },
-          {
-            "type": "=",
-            "named": false
-          },
-          {
-            "type": ">",
-            "named": false
-          },
-          {
-            "type": ">=",
-            "named": false
-          },
-          {
             "type": "action",
             "named": true
           },
@@ -705,10 +700,6 @@
           },
           {
             "type": "alias_rec",
-            "named": false
-          },
-          {
-            "type": "and",
             "named": false
           },
           {
@@ -768,12 +759,12 @@
             "named": true
           },
           {
-            "type": "or",
+            "type": "package",
             "named": false
           },
           {
-            "type": "package",
-            "named": false
+            "type": "package_dep",
+            "named": true
           },
           {
             "type": "package_name",
@@ -870,6 +861,29 @@
         },
         {
           "type": "stanza_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "version_constraint",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "multiline_string",
+          "named": true
+        },
+        {
+          "type": "quoted_string",
+          "named": true
+        },
+        {
+          "type": "version_constraint",
           "named": true
         }
       ]
