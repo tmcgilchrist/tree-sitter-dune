@@ -51,6 +51,7 @@ jobs:
           test-go: true
           test-swift: false
           node-version: '20'
+          abi-version: '14'
 
   parse-examples:
     name: Parse Examples
