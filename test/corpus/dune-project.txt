@@ -51,7 +51,8 @@ simple project
   (stanza
     (stanza_name))
   (stanza
-    (stanza_name))
+    (stanza_name)
+    (bool))
   (stanza
     (stanza_name)
     (quoted_string)
@@ -164,7 +165,8 @@ implicit_transitive_deps
 
 (source_file
   (stanza
-    (stanza_name)))
+    (stanza_name)
+    (bool)))
 
 =====
 subst
@@ -225,7 +227,8 @@ Bug #6: package with allow_empty and dependencies
   (stanza
     (stanza_name))
   (stanza
-    (stanza_name))
+    (stanza_name)
+    enabled: (bool))
   (stanza
     (stanza_name))
   (stanza
@@ -233,10 +236,125 @@ Bug #6: package with allow_empty and dependencies
     (field_name)
     value: (package_name)
     (field_name)
+    value: (bool)
     (field_name)
     value: (package_dep
       (package_name)
       (version_constraint))
     value: (package_dep
       (package_name)
+      (version_constraint))))
+
+====================================
+package with nested version constraints
+====================================
+
+(package
+  (name mylib)
+  (depends
+   (ocaml (and (>= 4.14) (< 6.0)))
+   (ppx_deriving (or (>= 5.0) (= 4.9)))
+   (base (and (>= 0.16) (or (< 1.0) (= 1.0.0))))))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (field_name)
+    value: (package_name)
+    (field_name)
+    value: (package_dep
+      (package_name)
+      (version_constraint
+        (version_constraint)
+        (version_constraint)))
+    value: (package_dep
+      (package_name)
+      (version_constraint
+        (version_constraint)
+        (version_constraint)))
+    value: (package_dep
+      (package_name)
+      (version_constraint
+        (version_constraint)
+        (version_constraint
+          (version_constraint)
+          (version_constraint))))))
+
+====================================
+package with conflicts
+====================================
+
+(package
+  (name mylib)
+  (conflicts
+   (badlib (>= 1.0))
+   oldlib))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (field_name)
+    value: (package_name)
+    (field_name)
+    value: (package_dep
+      (package_name)
+      (version_constraint))
+    value: (package_dep
+      (package_name))))
+
+====================================
+package with depopts
+====================================
+
+(package
+  (name mylib)
+  (depopts
+   (async (>= 0.15))
+   lwt
+   (eio (and (>= 0.12) (< 1.0)))))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (field_name)
+    value: (package_name)
+    (field_name)
+    value: (package_dep
+      (package_name)
+      (version_constraint))
+    value: (package_dep
+      (package_name))
+    value: (package_dep
+      (package_name)
+      (version_constraint
+        (version_constraint)
+        (version_constraint)))))
+
+====================================
+package with multiple version constraints
+====================================
+
+(package
+  (name mylib)
+  (depends
+   (ocaml (>= 4.14) (< 6.0) :with-test)))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (field_name)
+    value: (package_name)
+    (field_name)
+    value: (package_dep
+      (package_name)
+      (version_constraint)
+      (version_constraint)
       (version_constraint))))

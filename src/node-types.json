@@ -101,6 +101,11 @@
     "fields": {}
   },
   {
+    "type": "bool",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "file_name",
     "named": true,
     "fields": {},
@@ -397,12 +402,8 @@
         "required": false,
         "types": [
           {
-            "type": "false",
-            "named": false
-          },
-          {
-            "type": "true",
-            "named": false
+            "type": "bool",
+            "named": true
           }
         ]
       },
@@ -707,6 +708,10 @@
             "named": true
           },
           {
+            "type": "bool",
+            "named": true
+          },
+          {
             "type": "dir",
             "named": false
           },
@@ -716,10 +721,6 @@
           },
           {
             "type": "fallback",
-            "named": false
-          },
-          {
-            "type": "false",
             "named": false
           },
           {
@@ -799,10 +800,6 @@
             "named": false
           },
           {
-            "type": "true",
-            "named": false
-          },
-          {
             "type": "universe",
             "named": false
           }
@@ -829,6 +826,10 @@
       "types": [
         {
           "type": "action",
+          "named": true
+        },
+        {
+          "type": "bool",
           "named": true
         },
         {

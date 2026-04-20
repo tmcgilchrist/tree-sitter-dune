@@ -181,6 +181,7 @@ Rule
   (stanza
     (stanza_name)
     (field_name)
+    (bool)
     (field_name)
     (field_name)
     (action
@@ -488,7 +489,8 @@ re_export
     (library_name)
     (field_name)
     (library_name)
-    (field_name)))
+    (field_name)
+    (bool)))
 
 =============
 vendored_dirs
