@@ -185,7 +185,7 @@ module.exports = grammar({
           dune_field($, 'enabled_if', $.blang),
           dune_field($, 'alias', repeat1($.alias_name)),
           dune_field($, 'package', $.package_name),
-          dune_field($, 'fallback', optional($._bool)),
+          dune_field($, 'fallback', optional($.bool)),
           dune_field($, 'locks', repeat1($.lock_name)),
         ),
       ),
@@ -203,7 +203,7 @@ module.exports = grammar({
         $.file_name,
       ),
     _target: ($) => choice($.file_name_target, wrap('dir', $.file_name_target)),
-    _bool: ($) => choice('true', 'false'),
+    bool: ($) => choice('true', 'false'),
     _rule_mode: ($) =>
       choice(
         'fallback',
@@ -260,7 +260,7 @@ module.exports = grammar({
             $,
             'wrapped',
             choice(
-              optional($._bool),
+              optional($.bool),
               dune_field($, 'transition', $._atom_or_qs),
             ),
           ),
@@ -315,7 +315,7 @@ module.exports = grammar({
     _stanza_version: ($) =>
       wrap(alias('version', $.stanza_name), field('version', $._atom_or_qs)),
     _stanza_generate_opam_files: ($) =>
-      wrap(alias('generate_opam_files', $.stanza_name), field('enabled', $._bool)),
+      wrap(alias('generate_opam_files', $.stanza_name), field('enabled', $.bool)),
     _stanza_source: ($) =>
       wrap(
         alias('source', $.stanza_name),
@@ -371,7 +371,7 @@ module.exports = grammar({
             dune_field($, 'tags', repeat1($._atom_or_qs)),
             dune_field($, 'deprecated_package_names', repeat1($.package_name)),
             dune_field($, 'sites', repeat($.sexp)),
-            dune_field($, 'allow_empty', $._bool),
+            dune_field($, 'allow_empty', $.bool),
             $.sexp,
           ),
         ),
@@ -415,7 +415,7 @@ module.exports = grammar({
             wrap('target', field('target_triple', $._atom_or_qs)),
             wrap('merlin'),
             wrap('generate_merlin_rules'),
-            wrap('disable_dynamically_linked_foreign_archives', $._bool),
+            wrap('disable_dynamically_linked_foreign_archives', $.bool),
             wrap('root', field('opam_root', $._atom_or_qs)),
             wrap('lock_dir', field('lock_dir', $._atom_or_qs)),
             wrap('paths', repeat($.sexp)),
@@ -450,7 +450,7 @@ module.exports = grammar({
           dune_field($, 'modules', repeat1($.module_name)),
           dune_field($, 'merge_into', $.module_name),
           dune_field($, 'flags', repeat($._atom_or_qs)),
-          dune_field($, 'infer', $._bool),
+          dune_field($, 'infer', $.bool),
           dune_field($, 'explain', $.blang),
           $.sexp,
         ),
@@ -477,7 +477,7 @@ module.exports = grammar({
         choice(
           dune_field($, 'name', $.module_name),
           dune_field($, 'libraries', repeat($._lib_dep)),
-          dune_field($, 'optional', $._bool),
+          dune_field($, 'optional', $.bool),
           dune_field($, 'site', wrap($.package_name, $._atom_or_qs)),
           $.sexp,
         ),
@@ -530,17 +530,17 @@ module.exports = grammar({
     _stanza_expand_aliases_in_sandbox: ($) =>
       wrap(alias('expand_aliases_in_sandbox', $.stanza_name)),
     _stanza_implicit_transitive_deps: ($) =>
-      wrap(alias('implicit_transitive_deps', $.stanza_name), optional($._bool)),
+      wrap(alias('implicit_transitive_deps', $.stanza_name), optional($.bool)),
     _stanza_map_workspace_root: ($) =>
-      wrap(alias('map_workspace_root', $.stanza_name), optional($._bool)),
+      wrap(alias('map_workspace_root', $.stanza_name), optional($.bool)),
     _stanza_opam_file_location: ($) =>
       wrap(alias('opam_file_location', $.stanza_name), $._atom_or_qs),
     _stanza_subst: ($) =>
       wrap(alias('subst', $.stanza_name)),
     _stanza_use_standard_c_and_cxx_flags: ($) =>
-      wrap(alias('use_standard_c_and_cxx_flags', $.stanza_name), optional($._bool)),
+      wrap(alias('use_standard_c_and_cxx_flags', $.stanza_name), optional($.bool)),
     _stanza_wrapped_executables: ($) =>
-      wrap(alias('wrapped_executables', $.stanza_name), optional($._bool)),
+      wrap(alias('wrapped_executables', $.stanza_name), optional($.bool)),
     _stanza_maintenance_intent: ($) =>
       wrap(alias('maintenance_intent', $.stanza_name), $._atom_or_qs),
     // Additional dune-workspace stanzas (note: env is shared with dune files)

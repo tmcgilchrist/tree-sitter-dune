@@ -164,7 +164,8 @@ opam context with disable flag
 
 (source_file
   (stanza
-    (stanza_name)))
+    (stanza_name)
+    (bool)))
 
 ==========================
 opam context with paths
