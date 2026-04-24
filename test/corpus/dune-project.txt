@@ -72,11 +72,13 @@ package
 (source_file
   (stanza
     (stanza_name)
-    (field_name)
-    (package_name)
-    (field_name)
-    (package_name)
-    (package_name)))
+    (stanza_field
+      (field_name)
+      (package_name))
+    (stanza_field
+      (field_name)
+      (package_name)
+      (package_name))))
 
 ============
 source github

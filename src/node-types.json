@@ -655,6 +655,68 @@
           }
         ]
       },
+      "version": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "multiline_string",
+            "named": true
+          },
+          {
+            "type": "quoted_string",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "action",
+          "named": true
+        },
+        {
+          "type": "file_name",
+          "named": true
+        },
+        {
+          "type": "module_name",
+          "named": true
+        },
+        {
+          "type": "multiline_string",
+          "named": true
+        },
+        {
+          "type": "package_name",
+          "named": true
+        },
+        {
+          "type": "quoted_string",
+          "named": true
+        },
+        {
+          "type": "sexp",
+          "named": true
+        },
+        {
+          "type": "stanza_field",
+          "named": true
+        },
+        {
+          "type": "stanza_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "stanza_field",
+    "named": true,
+    "fields": {
       "value": {
         "multiple": true,
         "required": false,
@@ -732,10 +794,6 @@
             "named": false
           },
           {
-            "type": "field_name",
-            "named": true
-          },
-          {
             "type": "file_name",
             "named": true
           },
@@ -784,6 +842,10 @@
             "named": false
           },
           {
+            "type": "public_name",
+            "named": true
+          },
+          {
             "type": "quoted_string",
             "named": true
           },
@@ -814,114 +876,6 @@
           {
             "type": "universe",
             "named": false
-          }
-        ]
-      },
-      "version": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "multiline_string",
-            "named": true
-          },
-          {
-            "type": "quoted_string",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "action",
-          "named": true
-        },
-        {
-          "type": "field_name",
-          "named": true
-        },
-        {
-          "type": "file_name",
-          "named": true
-        },
-        {
-          "type": "module_name",
-          "named": true
-        },
-        {
-          "type": "multiline_string",
-          "named": true
-        },
-        {
-          "type": "package_name",
-          "named": true
-        },
-        {
-          "type": "quoted_string",
-          "named": true
-        },
-        {
-          "type": "sexp",
-          "named": true
-        },
-        {
-          "type": "stanza_field",
-          "named": true
-        },
-        {
-          "type": "stanza_name",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "stanza_field",
-    "named": true,
-    "fields": {
-      "value": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "(",
-            "named": false
-          },
-          {
-            "type": ")",
-            "named": false
-          },
-          {
-            "type": "action",
-            "named": true
-          },
-          {
-            "type": "blang",
-            "named": true
-          },
-          {
-            "type": "library_name",
-            "named": true
-          },
-          {
-            "type": "module_name",
-            "named": true
-          },
-          {
-            "type": "public_name",
-            "named": true
-          },
-          {
-            "type": "sexps1",
-            "named": true
-          },
-          {
-            "type": "stanza_field",
-            "named": true
           }
         ]
       }
