@@ -68,8 +68,8 @@ jobs:
       - name: Set up tree-sitter
         uses: tree-sitter/setup-action/cli@v2
 
-      - name: Generate parser (ABI 14)
-        run: tree-sitter generate --abi 14
+      - name: Generate parser
+        run: make generate
 
       - name: Parse example files
         uses: tree-sitter/parse-action@v4
@@ -86,8 +86,8 @@ jobs:
       - name: Set up tree-sitter
         uses: tree-sitter/setup-action/cli@v2
 
-      - name: Generate parser (ABI 14)
-        run: tree-sitter generate --abi 14
+      - name: Generate parser
+        run: make generate
 
       - name: Test highlight queries
         run: tree-sitter highlight queries/highlights.scm --check

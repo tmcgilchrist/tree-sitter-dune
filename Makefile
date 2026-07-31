@@ -54,7 +54,7 @@ endif
 
 # Generate parser from grammar
 generate:
-	tree-sitter generate
+	tree-sitter generate --abi 14
 
 # Install library and headers
 install: all
