@@ -15,10 +15,13 @@
     "authors": [
       {
         "name": "emillon"
+      },
+      {
+        "name": "tmcgilchrist"
       }
     ],
     "links": {
-      "repository": "https://github.com/emillon/tree-sitter-dune"
+      "repository": "https://github.com/tmcgilchrist/tree-sitter-dune"
     }
   },
   "bindings": {
