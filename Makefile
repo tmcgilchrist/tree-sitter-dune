@@ -1,9 +1,10 @@
-.PHONY: all install test generate clean
+.PHONY: all install test generate clean abi-version
 
 # Detect OS for platform-specific settings
 UNAME := $(shell uname)
 PREFIX ?= /usr/local
 PARSER_URL := tree_sitter_dune
+TS_ABI_VERSION := 14
 
 # Installation directories
 INCLUDEDIR := $(PREFIX)/include/tree_sitter
@@ -54,7 +55,11 @@ endif
 
 # Generate parser from grammar
 generate:
-	tree-sitter generate
+	tree-sitter generate --abi $(TS_ABI_VERSION)
+
+
+abi-version:
+	@echo $(TS_ABI_VERSION)
 
 # Install library and headers
 install: all

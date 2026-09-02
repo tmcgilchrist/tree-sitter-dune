@@ -42,11 +42,18 @@ jobs:
       - name: Set up tree-sitter
         uses: tree-sitter/setup-action/cli@v2
 
+      - name: Retrieve ABI version
+        id: abi
+        run: |
+          ABI_VERSION=$(make abi-version)
+          echo "version=$ABI_VERSION" >> "$GITHUB_OUTPUT"
+        shell: bash
+
       - name: Run parser tests
         uses: tree-sitter/parser-test-action@v3
         with:
           generate: true
-          abi-version: '14'
+          abi-version: ${{ steps.abi.outputs.version }}
           node-version: '20'
           test-rust: ${{runner.os == 'Linux'}}
           test-node: true
@@ -68,8 +75,8 @@ jobs:
       - name: Set up tree-sitter
         uses: tree-sitter/setup-action/cli@v2
 
-      - name: Generate parser (ABI 14)
-        run: tree-sitter generate --abi 14
+      - name: Generate parser
+        run: make generate
 
       - name: Parse example files
         uses: tree-sitter/parse-action@v4
@@ -86,8 +93,8 @@ jobs:
       - name: Set up tree-sitter
         uses: tree-sitter/setup-action/cli@v2
 
-      - name: Generate parser (ABI 14)
-        run: tree-sitter generate --abi 14
+      - name: Generate parser
+        run: make generate
 
       - name: Test highlight queries
         run: tree-sitter highlight queries/highlights.scm --check
