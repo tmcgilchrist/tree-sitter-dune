@@ -24,6 +24,10 @@ concurrency:
   group: ${{github.workflow}}-${{github.ref}}
   cancel-in-progress: true
 
+env:
+  # Keep in sync with TREE_SITTER_VERSION in fuzz.yml.
+  TREE_SITTER_VERSION: v0.27.0
+
 jobs:
   test:
     name: Test Parser
@@ -41,6 +45,12 @@ jobs:
 
       - name: Set up tree-sitter
         uses: tree-sitter/setup-action/cli@v2
+        with:
+          tree-sitter-ref: ${{env.TREE_SITTER_VERSION}}
+
+      - name: Report tree-sitter version
+        run: tree-sitter --version
+        shell: bash
 
       - name: Retrieve ABI version
         id: abi
@@ -74,6 +84,8 @@ jobs:
 
       - name: Set up tree-sitter
         uses: tree-sitter/setup-action/cli@v2
+        with:
+          tree-sitter-ref: ${{env.TREE_SITTER_VERSION}}
 
       - name: Generate parser
         run: make generate
@@ -92,6 +104,8 @@ jobs:
 
       - name: Set up tree-sitter
         uses: tree-sitter/setup-action/cli@v2
+        with:
+          tree-sitter-ref: ${{env.TREE_SITTER_VERSION}}
 
       - name: Generate parser
         run: make generate
