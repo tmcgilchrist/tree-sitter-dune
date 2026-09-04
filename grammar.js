@@ -169,6 +169,7 @@ module.exports = grammar({
     file_name_dep: ($) => $.file_name,
     file_name_target: ($) => $.file_name,
     package_name: ($) => $._atom_or_qs,
+    tag_name: ($) => $._atom_or_qs,
     lock_name: ($) => $._atom_or_qs,
     shell_command: ($) => $._atom_or_qs,
     _stanza_rule: ($) =>
@@ -368,7 +369,7 @@ module.exports = grammar({
             dune_field($, 'depends', repeat1($.package_dep)),
             dune_field($, 'conflicts', repeat1($.package_dep)),
             dune_field($, 'depopts', repeat1($.package_dep)),
-            dune_field($, 'tags', repeat1($._atom_or_qs)),
+            dune_field($, 'tags', wrap(repeat($.tag_name))),
             dune_field($, 'deprecated_package_names', repeat1($.package_name)),
             dune_field($, 'sites', repeat($.sexp)),
             dune_field($, 'allow_empty', $.bool),
