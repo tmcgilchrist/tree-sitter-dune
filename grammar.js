@@ -17,6 +17,8 @@ const PREC = {COMMENT: 0, STRING: 1};
 
 const atom_regexp = /[^;()"\s]+/;
 
+const pform_regexp = /%\{[^}]+\}/;
+
 const seq_regexp = (a, b) => new RegExp(a.source + b.source);
 
 module.exports = grammar({
@@ -39,7 +41,8 @@ module.exports = grammar({
           choice(/[^\\"]/, seq('\\', choice('n', '\n', '\r', 'r', '"', '\\'))),
         ),
       ),
-    _atom: ($) => atom_regexp,
+    interpolation: ($) => pform_regexp,
+    _atom: ($) => choice($.interpolation, atom_regexp),
     named_variable: ($) => seq_regexp(/:/, atom_regexp),
     _list: ($) => wrap(repeat($.sexp)),
     comment: ($) => token(prec(PREC.COMMENT, /;.*/)),
