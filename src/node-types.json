@@ -800,6 +800,10 @@
             "named": false
           },
           {
+            "type": "tag_name",
+            "named": true
+          },
+          {
             "type": "universe",
             "named": false
           }
@@ -862,6 +866,25 @@
         },
         {
           "type": "stanza_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "tag_name",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "multiline_string",
+          "named": true
+        },
+        {
+          "type": "quoted_string",
           "named": true
         }
       ]
